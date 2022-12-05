@@ -1,0 +1,46 @@
+package pajeobject;
+
+import constans.Url;
+import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class LoginPage extends Url {
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+        String currentUrl = BASE_URL + LOGIN;
+    }
+
+    //поле ввода Email
+    @FindBy(xpath = ".//input[@class='text input__textfield text_type_main-default']")
+    private WebElement inputEmail;
+    //поле ввода Пароля
+    @FindBy(xpath = ".//input[@type = 'password']")
+    private WebElement inputPassword;
+    //кнопка Войти
+    @FindBy(xpath = ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']")
+    private WebElement buttonEnter;
+
+    //шаги для WebElements
+    @Step("Ввести почту")
+    public void fillEmailInput(String email) {
+        inputEmail.sendKeys(email);
+    }
+
+    @Step("Ввести пароль")
+    public void fillPasswordInput(String password) {
+        inputPassword.sendKeys(password);
+    }
+
+    @Step("Клик на кнопку Войти")
+    public void clickEnter() {
+        buttonEnter.click();
+    }
+}

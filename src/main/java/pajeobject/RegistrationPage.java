@@ -39,20 +39,19 @@ public class RegistrationPage extends Url {
     }
 
     @Step("Ввести имя")
-    public void fillNameInput(String name) {
+    public void setNameInput(String name) {
         inputRegisterName.sendKeys(name);
     }
 
     @Step("Ввести Email")
-    public void fillEmailInput(String email) {
+    public void setEmailInput(String email) {
         inputRegisterEmail.sendKeys(email);
     }
 
     @Step("Ввести пароль")
-    public void fillPasswordInput(String password) {
+    public void setPasswordInput(String password) {
         inputRegisterPassword.sendKeys(password);
     }
-
 
     @Step("клик на кнопку Зарегистрироваться")
     public void clickSignUpButton() {

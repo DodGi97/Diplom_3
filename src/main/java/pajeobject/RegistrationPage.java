@@ -32,12 +32,20 @@ public class RegistrationPage extends Url {
     //текст ошибки "Некорректный пароль"
     @FindBy(xpath = ".//p[text()='Некорректный пароль']")
     private WebElement messageIncorrectPasswordError;
+    //кнопка Войти
+    @FindBy(xpath = ".//a[text() = 'Войти']")
+    private WebElement signIn;
+
     //метод для ожидания отображение ошибки для пароля
     public void waitForIncorrectPasswordError() {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOf(messageIncorrectPasswordError));
     }
+    @Step("Нажать на кнопку Войти")
+    public void clickSignIn(){
+        signIn.click();
 
+    }
     @Step("Ввести имя")
     public void setNameInput(String name) {
         inputRegisterName.sendKeys(name);

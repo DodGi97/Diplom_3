@@ -10,8 +10,7 @@ public class Url {
     public static final String FORGOT_PASSWORD = "forgot-password";
     public static final String ACCOUNT = "account/profile";
     public static final String REG = "register";
-    public static final String EMAIL = "test_g@yandex.ru";
-    public static final String PASSWORD = "TestPassword1234!";
+
 
     public WebDriver driver;
 

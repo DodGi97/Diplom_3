@@ -16,9 +16,15 @@ public class PasswordRecoveryPage extends Url {
 
     @FindBy(xpath = ".//button[text()='Восстановить']")
     private WebElement buttonForUpdateButton;
+    @FindBy(xpath = ".//a[@class = 'Auth_link__1fOlj']")
+    private WebElement signIn;
 
     @Step("Нажать на кнопку 'Восстановить'")
     public void clickButtonForUpdatePassword(){
         buttonForUpdateButton.click();
+    }
+    @Step ("Нажать на кнопку 'Войти'")
+    public void signIn(){
+        signIn.click();
     }
 }

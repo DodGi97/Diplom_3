@@ -12,18 +12,15 @@ import static constans.Path.PATH_TO_YANDEX_BROWSER;
 
 public class BaseTest {
     WebDriver driver;
-    //
-    protected final String email = "fluer@yandex.ru";
-    protected final String password = "TestPassword@1234!";
 
     @Before
     public void setup() {
 
-        //тест на Google Chrome
+        //тест на Google Chrome раскоментировать перед выполнением и закоментировать настройки по подключению Yandex Browser
 //        WebDriverManager.chromedriver().setup();
 //        driver = new ChromeDriver();
 
-        //тесты на Yandex Browser раскоментировать перед выполнением.
+        //тесты на Yandex Browser
         ChromeOptions options = new ChromeOptions();
         System.setProperty("webdriver.chrome.driver", PATH_TO_DRIVER_YANDEX);
         options.setBinary(PATH_TO_YANDEX_BROWSER);

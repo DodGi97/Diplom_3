@@ -44,6 +44,13 @@ public class MainPage extends Url {
     //логотип Космо-Бургерной
     @FindBy(xpath = ".//div[@class = 'AppHeader_header__logo__2D0X2']")
     private WebElement logo;
+    //раздел Лента Заказов
+    @FindBy(xpath = ".//p[text() = 'Лента Заказов']")
+    private WebElement orderFeed;
+    //раздел Конструктор
+    @FindBy(xpath = ".//p[text() = 'Конструктор']")
+    private WebElement constructor;
+
 
     //шаги
     @Step("Клик на кнопку Войти в аккаунт")
@@ -64,6 +71,16 @@ public class MainPage extends Url {
     @Step("Клик на раздел Булки")
     public void clickBunsTab() {
         bunsTab.click();
+    }
+
+    @Step("Клик на раздел Лента заказов")
+    public void clickOrderFeed(){
+        orderFeed.click();
+    }
+
+    @Step("Клик на раздел Конструктор")
+    public void clickConstructor(){
+        constructor.click();
     }
 
     @Step("Клик на раздел Соусы")

@@ -25,7 +25,6 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver", PATH_TO_DRIVER_YANDEX);
         options.setBinary(PATH_TO_YANDEX_BROWSER);
         driver = new ChromeDriver(options);
-
     }
 
     @After

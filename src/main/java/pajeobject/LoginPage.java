@@ -4,12 +4,7 @@ import constans.Url;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class LoginPage extends Url {
 
@@ -30,17 +25,22 @@ public class LoginPage extends Url {
 
     //шаги для WebElements
     @Step("Ввести почту")
-    public void fillEmailInput(String email) {
+    public void setEmailForLogin(String email) {
         inputEmail.sendKeys(email);
     }
 
     @Step("Ввести пароль")
-    public void fillPasswordInput(String password) {
+    public void setPasswordForLogin(String password) {
         inputPassword.sendKeys(password);
     }
 
     @Step("Клик на кнопку Войти")
     public void clickEnter() {
         buttonEnter.click();
+    }
+
+    @Step("Получить текст кнопки Войти")
+    public String getTextEnter() {
+        return buttonEnter.getText();
     }
 }

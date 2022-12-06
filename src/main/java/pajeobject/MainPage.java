@@ -54,6 +54,9 @@ public class MainPage extends Url {
     //раздел Конструктор
     @FindBy(xpath = ".//p[text() = 'Конструктор']")
     private WebElement constructor;
+    //надпись Соберите бургер
+    @FindBy(xpath = ".//h1[text() = 'Соберите бургер']")
+    private WebElement makeBurger;
 
 
     //шаги
@@ -105,5 +108,15 @@ public class MainPage extends Url {
     @Step("Клик на лого stellarburgers")
     public void clickStellarBurgersLogo() {
         logo.click();
+    }
+
+    @Step("Получить текст Соберите бургер")
+    public String getTextMakeBurger(){
+        return makeBurger.getText();
+    }
+
+    public void waitForDisplayMakeBurgerText() {
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.visibilityOf(makeBurger));
     }
 }

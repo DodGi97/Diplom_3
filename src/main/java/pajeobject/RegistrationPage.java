@@ -41,11 +41,13 @@ public class RegistrationPage extends Url {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOf(messageIncorrectPasswordError));
     }
+
     @Step("Нажать на кнопку Войти")
-    public void clickSignIn(){
+    public void clickSignIn() {
         signIn.click();
 
     }
+
     @Step("Ввести имя")
     public void setNameInput(String name) {
         inputRegisterName.sendKeys(name);

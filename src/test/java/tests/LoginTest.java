@@ -29,8 +29,8 @@ public class LoginTest extends BaseTest{
         mainPage.clickSignInButton();
         loginPage = new LoginPage(driver);
         PageFactory.initElements(driver, loginPage);
-        loginPage.fillEmailInput(EMAIL);
-        loginPage.fillPasswordInput(PASSWORD);
+        loginPage.setEmailForLogin(EMAIL);
+        loginPage.setPasswordForLogin(PASSWORD);
         loginPage.clickEnter();
     }
 
@@ -43,8 +43,8 @@ public class LoginTest extends BaseTest{
         mainPage.clickPersonalAccount();
         loginPage = new LoginPage(driver);
         PageFactory.initElements(driver, loginPage);
-        loginPage.fillEmailInput(EMAIL);
-        loginPage.fillPasswordInput(PASSWORD);
+        loginPage.setEmailForLogin(EMAIL);
+        loginPage.setPasswordForLogin(PASSWORD);
         loginPage.clickEnter();
     }
 
@@ -57,8 +57,8 @@ public class LoginTest extends BaseTest{
         registrationPage.clickSignIn();
         loginPage = new LoginPage(driver);
         PageFactory.initElements(driver, loginPage);
-        loginPage.fillEmailInput(EMAIL);
-        loginPage.fillPasswordInput(PASSWORD);
+        loginPage.setEmailForLogin(EMAIL);
+        loginPage.setPasswordForLogin(PASSWORD);
         loginPage.clickEnter();
     }
 
@@ -71,8 +71,8 @@ public class LoginTest extends BaseTest{
         passwordRecoveryPage.signIn();
         loginPage = new LoginPage(driver);
         PageFactory.initElements(driver, loginPage);
-        loginPage.fillEmailInput(EMAIL);
-        loginPage.fillPasswordInput(PASSWORD);
+        loginPage.setEmailForLogin(EMAIL);
+        loginPage.setPasswordForLogin(PASSWORD);
         loginPage.clickEnter();
     }
 }

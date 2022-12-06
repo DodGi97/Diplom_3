@@ -1,0 +1,8 @@
+pajeobject\PasswordRecoveryPage.class
+pajeobject\LoginPage.class
+constans\Path.class
+constans\DataLogin.class
+pajeobject\MainPage.class
+pajeobject\AccountPage.class
+pajeobject\RegistrationPage.class
+constans\Url.class

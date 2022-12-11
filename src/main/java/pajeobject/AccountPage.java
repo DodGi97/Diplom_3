@@ -44,6 +44,10 @@ public class AccountPage extends Url {
         logOutButton.click();
     }
 
+    public String  getTextLogout(){
+        return logOutButton.getText();
+    }
+
     @Step("Кликнуть на 'Профиль'")
     public void clickOnProfile() {
         profile.click();

@@ -32,23 +32,21 @@ public class MovingTest extends BaseTest {
         mainPage = new MainPage(driver);
         PageFactory.initElements(driver, mainPage);
         mainPage.clickPersonalAccount();
+        accountPage = new AccountPage(driver);
+        PageFactory.initElements(driver, accountPage);
+        accountPage.waitForDisplayProfileText();
 
     }
 
     @Test
     @DisplayName("Переход в личный кабинет с главной страницы")
     public void goToProfileFromMainPage() {
-        accountPage = new AccountPage(driver);
-        PageFactory.initElements(driver, accountPage);
-        accountPage.waitForDisplayProfileText();
         Assert.assertEquals("Профиль", accountPage.getProfileText());
     }
 
     @Test
     @DisplayName("Переход на главную страницу нажав на Конструтор")
     public void goToMainPageFromProfileWithConstructor() {
-        accountPage = new AccountPage(driver);
-        PageFactory.initElements(driver, accountPage);
         accountPage.clickConstructor();
         mainPage = new MainPage(driver);
         PageFactory.initElements(driver, mainPage);
@@ -59,8 +57,6 @@ public class MovingTest extends BaseTest {
     @Test
     @DisplayName("Переход на главную страницу из личного кабинета при нажатие на логотип")
     public void goToMainPageFromProfile() {
-        accountPage = new AccountPage(driver);
-        PageFactory.initElements(driver, accountPage);
         accountPage.waitForDisplayProfileText();
         accountPage.clickOnLogo();
         mainPage = new MainPage(driver);
@@ -72,9 +68,12 @@ public class MovingTest extends BaseTest {
     @Test
     @DisplayName("Выход из личного кабинет")
     public void exitFromProfile() {
-        accountPage = new AccountPage(driver);
-        PageFactory.initElements(driver, accountPage);
         accountPage.waitForDisplayProfileText();
         accountPage.clickLogOutButton();
+        Assert.assertEquals("Выход", accountPage.getTextLogout());
+        accountPage.clickOnLogo();
+        mainPage = new MainPage(driver);
+        PageFactory.initElements(driver, mainPage);
+        Assert.assertEquals("Войти в аккаунт", mainPage.getSignInButton());
     }
 }

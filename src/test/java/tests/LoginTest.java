@@ -1,6 +1,8 @@
 package tests;
 
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 import pajeobject.LoginPage;
@@ -19,7 +21,18 @@ public class LoginTest extends BaseTest{
 
     PasswordRecoveryPage passwordRecoveryPage;
     LoginPage loginPage;
-
+    @After
+    public void end() {
+        loginPage = new LoginPage(driver);
+        PageFactory.initElements(driver, loginPage);
+        loginPage.setEmailForLogin(EMAIL);
+        loginPage.setPasswordForLogin(PASSWORD);
+        loginPage.clickEnter();
+        mainPage = new MainPage(driver);
+        PageFactory.initElements(driver, mainPage);
+        mainPage.waitButtonForMakeOrder();
+        Assert.assertTrue(mainPage.isDisplayedGetOrderButton());
+    }
     @Test
     @DisplayName("Вход в приложение по кнопке «Войти в аккаунт» на главной странице")
     public void clickLogInOnMainPageUserLoggedIn() {
@@ -27,11 +40,6 @@ public class LoginTest extends BaseTest{
         PageFactory.initElements(driver, mainPage);
         driver.get(mainPage.getCurrentUrl());
         mainPage.clickSignInButton();
-        loginPage = new LoginPage(driver);
-        PageFactory.initElements(driver, loginPage);
-        loginPage.setEmailForLogin(EMAIL);
-        loginPage.setPasswordForLogin(PASSWORD);
-        loginPage.clickEnter();
     }
 
     @Test
@@ -41,11 +49,6 @@ public class LoginTest extends BaseTest{
         PageFactory.initElements(driver, mainPage);
         driver.get(mainPage.getCurrentUrl());
         mainPage.clickPersonalAccount();
-        loginPage = new LoginPage(driver);
-        PageFactory.initElements(driver, loginPage);
-        loginPage.setEmailForLogin(EMAIL);
-        loginPage.setPasswordForLogin(PASSWORD);
-        loginPage.clickEnter();
     }
 
     @Test
@@ -55,11 +58,6 @@ public class LoginTest extends BaseTest{
         PageFactory.initElements(driver, registrationPage);
         driver.get(registrationPage.getCurrentUrl());
         registrationPage.clickSignIn();
-        loginPage = new LoginPage(driver);
-        PageFactory.initElements(driver, loginPage);
-        loginPage.setEmailForLogin(EMAIL);
-        loginPage.setPasswordForLogin(PASSWORD);
-        loginPage.clickEnter();
     }
 
     @Test
@@ -69,10 +67,5 @@ public class LoginTest extends BaseTest{
         PageFactory.initElements(driver, passwordRecoveryPage);
         driver.get(passwordRecoveryPage.getCurrentUrl());
         passwordRecoveryPage.signIn();
-        loginPage = new LoginPage(driver);
-        PageFactory.initElements(driver, loginPage);
-        loginPage.setEmailForLogin(EMAIL);
-        loginPage.setPasswordForLogin(PASSWORD);
-        loginPage.clickEnter();
     }
 }

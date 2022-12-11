@@ -65,6 +65,10 @@ public class MainPage extends Url {
         signInButton.click();
     }
 
+    public String getSignInButton(){
+        return signInButton.getText();
+    }
+
     @Step("Клик по кнопке Личный кабинет")
     public void clickPersonalAccount() {
         personalAccount.click();
@@ -81,12 +85,12 @@ public class MainPage extends Url {
     }
 
     @Step("Клик на раздел Лента заказов")
-    public void clickOrderFeed(){
+    public void clickOrderFeed() {
         orderFeed.click();
     }
 
     @Step("Клик на раздел Конструктор")
-    public void clickConstructor(){
+    public void clickConstructor() {
         constructor.click();
     }
 
@@ -105,13 +109,18 @@ public class MainPage extends Url {
         return getOrderButton.isDisplayed();
     }
 
+    public void waitButtonForMakeOrder(){
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.visibilityOf(getOrderButton));
+    }
+
     @Step("Клик на лого stellarburgers")
     public void clickStellarBurgersLogo() {
         logo.click();
     }
 
     @Step("Получить текст Соберите бургер")
-    public String getTextMakeBurger(){
+    public String getTextMakeBurger() {
         return makeBurger.getText();
     }
 

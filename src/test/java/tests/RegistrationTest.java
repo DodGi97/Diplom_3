@@ -34,7 +34,7 @@ public class RegistrationTest extends BaseTest{
         registrationPage.setEmailInput(email);
         registrationPage.setPasswordInput(password);
         registrationPage.clickSignUpButton();
-
+        Assert.assertEquals(registrationPage.getCurrentUrl(), driver.getCurrentUrl());
     }
 
     @Test

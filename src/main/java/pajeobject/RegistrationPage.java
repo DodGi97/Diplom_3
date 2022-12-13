@@ -63,7 +63,7 @@ public class RegistrationPage extends Url {
         inputRegisterPassword.sendKeys(password);
     }
 
-    @Step("клик на кнопку Зарегистрироваться")
+    @Step("Клик на кнопку Зарегистрироваться")
     public void clickSignUpButton() {
         buttonRegistry.click();
     }
@@ -72,4 +72,22 @@ public class RegistrationPage extends Url {
     public String getIncorrectPasswordErrorText() {
         return messageIncorrectPasswordError.getText();
     }
+
+    @Step("Отображение информации об ошибке Некорректный пароль")
+    public boolean isVisibleIncorrectPasswordErrorText() {
+         messageIncorrectPasswordError.isDisplayed();
+         return true;
+    }
+
+    @Step("Отображение кнопки Войти")
+    public boolean isVisibleSigInButton(){
+        signIn.isDisplayed();
+        return true;
+    }
+
+    @Step()
+    public void waitSigInButton (){
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+            .until(ExpectedConditions.visibilityOf(signIn));
+}
 }

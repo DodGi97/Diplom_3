@@ -1,8 +1,16 @@
 pajeobject\PasswordRecoveryPage.class
+constans\Url.class
+pojos\BasicResponse.class
+pojos\SignInRequest.class
+constans\UrlForApi.class
+pojos\SuccessSignInSignUpResponse.class
 pajeobject\LoginPage.class
 constans\Path.class
 constans\DataLogin.class
 pajeobject\MainPage.class
+pojos\UserRequest.class
+api_steps\UserSteps.class
 pajeobject\AccountPage.class
 pajeobject\RegistrationPage.class
-constans\Url.class
+pojos\NestedUserInfo.class
+constans\UserDataApi.class

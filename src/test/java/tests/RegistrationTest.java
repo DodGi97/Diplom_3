@@ -12,9 +12,9 @@ import pajeobject.RegistrationPage;
 import pojos.SignInRequest;
 import pojos.SuccessSignInSignUpResponse;
 
-public class RegistrationTest extends BaseTest{
+public class RegistrationTest extends BaseTest {
     String password;
-    String name = "Ivan";
+    String name = RandomStringUtils.randomAlphanumeric(10);
     String email;
     RegistrationPage registrationPage;
 
@@ -52,7 +52,7 @@ public class RegistrationTest extends BaseTest{
     @DisplayName("Невреный пароль при создание нового пользователя")
     public void createUserWithIncorrectPasswordGetError() {
 
-        password = "12";
+        password = RandomStringUtils.randomAlphanumeric(5);
 
         registrationPage.setNameInput(name);
         registrationPage.setEmailInput(email);

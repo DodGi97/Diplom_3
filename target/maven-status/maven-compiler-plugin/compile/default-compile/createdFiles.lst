@@ -6,7 +6,6 @@ constans\UrlForApi.class
 pojos\SuccessSignInSignUpResponse.class
 pajeobject\LoginPage.class
 constans\Path.class
-constans\DataLogin.class
 pajeobject\MainPage.class
 pojos\UserRequest.class
 api_steps\UserSteps.class

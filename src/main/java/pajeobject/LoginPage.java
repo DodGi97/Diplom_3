@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pojos.SignInRequest;
 
 import java.time.Duration;
 
@@ -50,5 +51,11 @@ public class LoginPage extends Url {
     public void waitEnterButton(){
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOf(buttonEnter));
+    }
+
+    public void loginWithCredentials(SignInRequest signInRequest) {
+        setEmailForLogin(signInRequest.getEmail());
+        setPasswordForLogin(signInRequest.getPassword());
+        clickEnter();
     }
 }

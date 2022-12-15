@@ -1,38 +1,61 @@
 package tests;
 
+import api_steps.UserSteps;
+import constans.UserDataApi;
 import io.qameta.allure.junit4.DisplayName;
+import io.restassured.RestAssured;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 import pajeobject.LoginPage;
 import pajeobject.MainPage;
 import pajeobject.PasswordRecoveryPage;
 import pajeobject.RegistrationPage;
+import pojos.SignInRequest;
+import pojos.SuccessSignInSignUpResponse;
+import pojos.UserRequest;
 
-import static constans.DataLogin.EMAIL;
-import static constans.DataLogin.PASSWORD;
 
-
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
 
     MainPage mainPage;
     RegistrationPage registrationPage;
 
     PasswordRecoveryPage passwordRecoveryPage;
     LoginPage loginPage;
+    String accessToken;
+    UserRequest testUser;
+    SignInRequest signInRequest;
+
+    @Before
+    public void start() {
+        testUser = UserDataApi.getUniqueUser();
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+
+        SuccessSignInSignUpResponse signUpResponse = UserSteps.createUniqueUser(testUser)
+                .then()
+                .statusCode(200)
+                .extract()
+                .as(SuccessSignInSignUpResponse.class);
+        accessToken = signUpResponse.getAccessToken();
+        signInRequest = new SignInRequest(testUser.getEmail(), testUser.getPassword());
+
+    }
+
     @After
     public void end() {
         loginPage = new LoginPage(driver);
         PageFactory.initElements(driver, loginPage);
-        loginPage.setEmailForLogin(EMAIL);
-        loginPage.setPasswordForLogin(PASSWORD);
-        loginPage.clickEnter();
+        loginPage.loginWithCredentials(signInRequest);
         mainPage = new MainPage(driver);
         PageFactory.initElements(driver, mainPage);
         mainPage.waitButtonForMakeOrder();
         Assert.assertTrue(mainPage.isDisplayedGetOrderButton());
+        UserSteps.deleteUser(accessToken);
     }
+
     @Test
     @DisplayName("Вход в приложение по кнопке «Войти в аккаунт» на главной странице")
     public void clickLogInOnMainPageUserLoggedIn() {

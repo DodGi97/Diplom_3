@@ -75,14 +75,12 @@ public class RegistrationPage extends Url {
 
     @Step("Отображение информации об ошибке Некорректный пароль")
     public boolean isVisibleIncorrectPasswordErrorText() {
-         messageIncorrectPasswordError.isDisplayed();
-         return true;
+         return messageIncorrectPasswordError.isDisplayed();
     }
 
     @Step("Отображение кнопки Войти")
     public boolean isVisibleSigInButton(){
-        signIn.isDisplayed();
-        return true;
+        return signIn.isDisplayed();
     }
 
     @Step()
